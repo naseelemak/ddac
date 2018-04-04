@@ -1,0 +1,660 @@
+/* GENERAL */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #f5f5f5;
+    /* The WOKO yellow #FFC000 */
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.btnPointer:hover {
+    cursor: pointer;
+}
+
+.float-right {
+    float: right;
+}
+
+.error {
+    color: #FF0000;
+}
+
+.logo-before,
+.password-forgot {
+    color: #000000;
+    text-decoration: none;
+}
+
+.logo-before:hover,
+.password-forgot:hover {
+    color: #696969;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.jumbotron {
+    background: -webkit-gradient(linear,
+    left top, left bottom,
+    from(rgba(0, 0, 0, 0.65)),
+    to(rgba(0, 0, 0, 0.65))),
+    url("../images/jumbotron.jpg") no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.65)),
+    url("../images/jumbotron.jpg") no-repeat;
+    background-size: auto auto;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: auto;
+    width: 100%;
+}
+
+.no-hover-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.no-hover-success:hover {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.my-btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.btn-deadline-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-deadline-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* https://codepen.io/siiron/pen/jfBhy/ */
+
+/* Begin required CSS. */
+
+.line-clamp {
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    position: relative;
+
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 !important;
+}
+
+.line-clamp:after {
+    content: '...';
+    text-align: right;
+    bottom: 0;
+    right: 0;
+    width: 25%;
+    display: block;
+    position: absolute;
+    height: calc(1em * 1.5);
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(75%, rgba(255, 255, 255, 1)));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 75%);
+}
+
+@supports (-webkit-line-clamp: 1) {
+    .line-clamp:after {
+        display: none !important;
+    }
+}
+
+.line-clamp-1 {
+    -webkit-line-clamp: 1;
+    height: calc(1em * 1.5 * 1);
+}
+
+.line-clamp-2 {
+    -webkit-line-clamp: 2;
+    height: calc(1em * 1.5 * 2);
+}
+
+.line-clamp-3 {
+    -webkit-line-clamp: 3;
+    height: calc(1em * 1.5 * 3);
+}
+
+.line-clamp-4 {
+    -webkit-line-clamp: 4;
+    height: calc(1em * 1.5 * 4);
+}
+
+.line-clamp-5 {
+    -webkit-line-clamp: 5;
+    height: calc(1em * 1.5 * 5);
+}
+
+/* End required CSS. */
+
+/* For drop shadows */
+
+.navbar {
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+#confirmation button {
+    background: none !important;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    /*border is optional*/
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+}
+
+/* HOME */
+
+.homepage {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    text-align: center;
+    line-height: 1.35;
+}
+
+.homepage ul {
+    list-style: none;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .homepage-head {
+        padding: 40px 0;
+    }
+
+    .homepage-title {
+        font-size: 42px;
+        line-height: 1.1;
+        max-width: 336px;
+    }
+
+    .homepage-subtitle {
+        font-size: 16px;
+        max-width: 336px;
+    }
+
+    .homepage-subtitle-btn {
+        font-size: 16px;
+        max-width: 280px;
+    }
+
+    .homepage-btn-area {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .homepage-tips-area {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+
+    .homepage-head {
+        padding: 40px 0;
+    }
+
+    .homepage-title {
+        font-size: 42px;
+        line-height: 1.1;
+        max-width: 336px;
+    }
+
+    .homepage-subtitle {
+        font-size: 18px;
+    }
+
+    .homepage-subtitle-btn {
+        font-size: 18px;
+    }
+
+    .homepage-btn-area {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .homepage-tips-area {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+}
+
+.bg-homepage-head {
+    background-color: #2b2b2b;
+}
+
+.homepage-head {
+    padding: 60px 0;
+}
+
+.homepage-title {
+    margin: 0 auto .150em;
+    font-size: 38px;
+}
+
+.homepage-subtitle {
+    color: rgba(255, 255, 255, .7);
+    margin: 0 auto 56px;
+    width: 100%;
+}
+
+.homepage-subtitle-btn {
+    color: rgba(255, 255, 255, .7);
+    margin: 0 auto 10px;
+}
+
+.homepage-btn-area {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.homepage-btn {
+    border: 3px solid #007AFF;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    width: 220px;
+    -webkit-transition: border .2s;
+    transition: border .2s;
+}
+
+.homepage-btn:hover {
+    border: 3px solid #0069D9;
+    background: #0069D9;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    width: 220px;
+}
+
+.homepage-or {
+    margin: 5px;
+}
+
+.homepage-line {
+    border: 1.75px solid #fff;
+    border-color: #fff;
+    margin: 0 auto 10px;
+    max-width: 35px;
+}
+
+.homepage a {
+    color: #fff;
+}
+
+.homepage a:hover {
+    color: #fff;
+}
+
+.homepage-tips-area {
+    color: #fff;
+    text-align: center;
+    margin: 100px auto 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-width: 950px;
+}
+
+.homepage-tips-item {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 33.3333%;
+    flex: 0 1 33.3333%;
+    margin: 0 48px 25px;
+    position: relative;
+}
+
+.homepage-tips-title {
+    margin: 0 0 6px;
+    font-size: 24px;
+}
+
+.homepage-tips-description {
+    opacity: .7;
+    margin: 0 auto 8px;
+    text-align: center;
+    max-width: 240px;
+}
+
+/* Image Formatting */
+
+.img-container {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+    background-color: #000000;
+}
+
+.img-container img {
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* LOGIN */
+
+.register-btn {
+    color: #2377A1;
+}
+
+.register-btn:hover {
+    color: #3096C9;
+}
+
+/* COMPETITION LIST */
+
+#comp-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.btn-tags {
+    color: #343a40;
+    background-color: transparent;
+    background-image: none;
+    border-color: #343a40;
+}
+
+.card-link {
+    color: #424242;
+}
+
+.card-link:hover {
+    color: #000000;
+}
+
+.card-date > p {
+    margin: 0;
+    text-align: center;
+}
+
+.card-date-month {
+    font-size: 0.85em;
+}
+
+.card-date-day {
+    font-size: 1.3em;
+}
+
+.comp-card-footer > .text-muted {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sticky-top {
+    top: 1em;
+}
+
+/* COMPETITION DETAILS */
+
+.competition-poster:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.competition-deadline {
+    color: #e53935;
+}
+
+.tag-title {
+    font-size: 0.85em;
+}
+
+.competition-details-line {
+    margin: 25px 0;
+}
+
+.competition-url-disabled:hover {
+    cursor: auto;
+}
+
+/* USER GUIDES */
+
+.guide-steps {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/*--------------------
+    LECTURER PAGES 
+----------------------*/
+
+/* General */
+
+#sidebar a,
+#sidebar a:hover,
+#sidebar a:focus {
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.dashboard-navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/*------ SIDEBAR STYLE ------*/
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #343a40;
+    color: #fff;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 12.3px 15px;
+    background: #212529;
+}
+
+#sidebar .sidebar-header h3 {
+    margin-top: 5px;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 12px 10px 12px 20px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar ul li a i {
+    float: right;
+    margin-top: 5.2px;
+    padding-right: 12px;
+}
+
+#sidebarCollapse {
+    margin-top: -3px;
+    cursor: pointer;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #3f464d;
+}
+
+/*------ CONTENT STYLE ------*/
+
+#content {
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#content.active {
+    width: 100%;
+}
+
+/*------ MEDIAQUERIES ------*/
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+    #sidebar.active {
+        margin-left: 0;
+    }
+
+    #content {
+        width: 100%;
+    }
+
+    #content.active {
+        width: calc(100% - 250px);
+    }
+}
+
+@media (max-width: 991px) {
+    .header-margin {
+        margin-left: 18px;
+    }
+}
+
+/* Lecturer Competition List */
+
+table.dataTable thead .disabled-sorting.sorting:after,
+table.dataTable thead .disabled-sorting.sorting_asc:after,
+table.dataTable thead .disabled-sorting.sorting_desc:after,
+table.dataTable thead .disabled-sorting.sorting_asc_disabled:after,
+table.dataTable thead .disabled-sorting.sorting_desc_disabled:after,
+table.dataTable thead .disabled-sorting.sorting:before,
+table.dataTable thead .disabled-sorting.sorting_asc:before,
+table.dataTable thead .disabled-sorting.sorting_desc:before,
+table.dataTable thead .disabled-sorting.sorting_asc_disabled:before,
+table.dataTable thead .disabled-sorting.sorting_desc_disabled:before {
+    display: none;
+}
+
+.action-btn {
+    margin-left: 15px;
+}
+
+.td-actions {
+    min-width: 100px;
+}
+
+.table-action {
+    padding: 0 6px;
+}
