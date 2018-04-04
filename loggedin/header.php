@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require '../config.php';
 
 ?>
 
@@ -15,30 +15,30 @@ require 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Normalize CSS -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="../assets/css/normalize.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
 
     <!-- Icon imports -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <!-- Own CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
 </head>
 
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/moment.min.js"></script>
+<script type="text/javascript" src="../assets/js/moment.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 
 <!-- Date Range Picker -->
-<script type="text/javascript" src="assets/js/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/css/daterangepicker.css"/>
+<script type="text/javascript" src="../assets/js/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="../assets/css/daterangepicker.css"/>
 
 <!-- Scrollbar Custom CSS -->
 <link rel="stylesheet"
