@@ -973,14 +973,13 @@
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="245" parent="243" name="name">
+    <column id="245" parent="243" name="password">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
-      <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="246" parent="243" name="password">
+    <column id="246" parent="243" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>

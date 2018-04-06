@@ -10,7 +10,16 @@
 
         <ul class="list-unstyled components">
             <li>
-                <a href="stud.php">Customers</a>
+                <a href="cust.php">Customers</a>
+            </li>
+            <li>
+                <a href="item.php">Items</a>
+            </li>
+            <li>
+                <a href="ship.php">Shipment</a>
+            </li>
+            <li>
+                <a href="vess.php">Vessel</a>
             </li>
             <li>
                 <a href="agent.php">Agents</a>
@@ -19,8 +28,6 @@
             <hr class="d-lg-none d-xl-none">
 
             <li class="d-lg-none d-xl-none">
-                <a href="profile.php">Profile</a>
-                <a href="change-password.php">Change Password</a>
                 <a href="../logout.php" class="dropdown-item">Logout</a>
             </li>
         </ul>

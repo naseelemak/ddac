@@ -9,141 +9,144 @@ include 'misc/navbar.php';
 
 <div class="container">
     <div class="row px-2">
-        <div class="col-md-12">
-            <form id="compCreateForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
-                  enctype="multipart/form-data">
+        <div class="col-md-6">
+            <form method="post" id="agentAddForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <!-- Username -->
                 <div class="form-group">
-                    <label for="regName">Username</label>
-                    <input type="text" name="regName" class="form-control" id="regName"
-                           placeholder="As per APU registration" required>
+                    <label for="username">Username&nbsp;</label><i class="fa fa-question-circle text-muted"
+                                                                   data-toggle="tooltip" data-placement="auto"
+                                                                   title="Has to be unique" aria-hidden="true"></i>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username"
+                           required>
                 </div>
 
                 <!-- Password -->
                 <div class="form-group">
-                    <label for="regName">Password</label>
-                    <input type="password" name="regPass" class="form-control" id="regName" placeholder="Password"
-                           required>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+                           minlength="6" required>
                 </div>
 
                 <!-- Name -->
                 <div class="form-group">
-                    <label for="regName">Name</label>
-                    <input type="text" name="regName" class="form-control" id="regName"
-                           placeholder="As per APU registration" required>
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
                 </div>
 
                 <!-- Email -->
                 <div class="form-group">
-                    <label for="regName">Email</label>
-                    <input type="text" name="regName" class="form-control" id="regName"
-                           placeholder="As per APU registration" required>
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                 </div>
 
-                <div class="float-right mt-2">
-                    <button type="submit" name="regSubmit" id="regSubmit" class="btn btn-primary mr-1">Submit</button>
-                    <a class="btn btn-secondary" href="login.php" style="padding-left: 15px; padding-right: 15px;">Cancel</a>
+                <div class="float-right mb-4">
+                    <button type="submit" name="btnSubmit" id="btnSubmit" class="btn btn-primary mr-1">Submit
+                    </button>
+                    <a class="btn btn-secondary" href="agent.php" style="padding-left: 15px; padding-right: 15px;">Cancel</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-
-<?php
-include 'sub-footer.php';
-?>
-
-<!-- Competition Dates Date Range Picker -->
-<script type="text/javascript">
-    $(function () {
-        $('input[name="compDates"]').daterangepicker({
-            "locale": {
-                "format": "DD/MM/YYYY",
-            },
-        });
-
-    });
-
-</script>
-
-<!-- Visual Editor -->
-<script>
-    $('#summernote').summernote({
-        tabsize: 2,
-        height: 200,
-        disableResizeEditor: true,
-        toolbar: [
-            // [groupName, [list of button]]
-            ['undo'],
-            ['redo'],
-            ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table'],
-            ['fullscreen'],
-            ['codeview'],
-            ['help'],
-        ],
-    });
-    $('.note-statusbar').hide();
-
-</script>
-
-<!-- Number of Participants Field -->
-<script type="text/javascript">
-    function changetextbox() {
-        if (document.getElementById("compType").value === "Individual") {
-            document.getElementById("compParticipants").disabled = 'true';
-            document.getElementById("compParticipants").value = "";
-            document.getElementById("compParticipants").required = false;
-
-        } else {
-            document.getElementById("compParticipants").disabled = '';
-            document.getElementById("compParticipants").required = true;
-        }
-    }
-
-</script>
-
-<!-- Registration Deadline Date Picker -->
-<script type="text/javascript">
-    $(function () {
-        $('input[name="compDeadline"]').daterangepicker({
-                "locale": {
-                    "format": "DD/MM/YYYY",
-                },
-                singleDatePicker: true,
-                showDropdowns: true
-            },
-            function (start, end, label) {
-            });
-    });
-
-</script>
-
 <!-- Javascript Validation -->
 <script type="text/javascript">
     $().ready(function () {
-        $.validator.addMethod('compParticipants', function (value) {
-            return /^[0-9]+$|^[0-9]+-[0-9]+$/.test(value);
-        }, 'Please follow the specified format (e.g. 2-4).');
-        $.validator.addMethod('compTags', function (value) {
-            return /^[a-zA-Z0-9-_,()_+#. ]+$/.test(value);
-        }, 'Please only enter valid characters.');
 
         // Validate signup form on keyup and submit
-        $("#compCreateForm").validate({
-            rules: {
-                compParticipants: "required compParticipants",
-                compTags: "required compTags",
-            },
-        });
+        $("#agentAddForm").validate({});
     });
 
 </script>
+
 
 <?php
 include 'sub-footer.php';
 ?>
 
+
+<?php
+// Edit Profile
+if (isset($_POST['btnSubmit'])) {
+
+// -- Preliminary validation
+    if (empty($_POST['username'])) {
+        echo "<script>alert('Please specify a username.');";
+        echo "document.getElementById('username').focus();</script>";
+        return false;
+    }
+
+    if (empty($_POST['password'])) {
+        echo "<script>alert('Please specify a password.');";
+        echo "document.getElementById('password').focus();</script>";
+        return false;
+    }
+
+    if (empty($_POST['name'])) {
+        echo "<script>alert('Please specify a name.');";
+        echo "document.getElementById('name').focus();</script>";
+        return false;
+    }
+
+    if (empty($_POST['email'])) {
+        echo "<script>alert('Please specify an email address.');";
+        echo "document.getElementById('email').focus();</script>";
+        return false;
+    }
+// -- Preliminary validation ends
+
+    $username = test_input($_POST['username']);
+    $password = test_input($_POST['password']);
+    $name = test_input($_POST['name']);
+    $email = test_input($_POST['email']);
+
+// Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        return false;
+    }
+
+// Checks first if user already exists
+    $stmt = $conn->prepare('SELECT `username` FROM `agents` WHERE `username` = ?');
+
+    $stmt->bind_param('s', $username);
+
+// execute query
+    $stmt->execute();
+
+// Get the result
+    $result = $stmt->get_result();
+
+// If user already exists in database
+    if ($result->num_rows > 0) {
+        echo "<script>alert('Username already exists! Please enter an another username.');";
+        echo "document.getElementById('regID').focus();</script>";
+        return false;
+    }
+
+// hashes the password before saving it in the db
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+// Inserts details into the Agents table
+    $stmt = $conn->prepare('INSERT INTO `agents`(`username`, `password`, `name`, `email`) VALUES (?, ?, ?, ?)');
+
+    $stmt->bind_param('ssss', $username, $password, $name, $email);
+
+// execute query
+    $stmt->execute();
+
+
+    echo "<script>alert('Agent added successfully!'); window.location.replace('agent.php');</script>";
+}
+
+// Cleans input
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+?>
 
