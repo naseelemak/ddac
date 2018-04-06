@@ -8,6 +8,7 @@ if (isset($_SESSION['user'])) {
     echo "<script>window.location.href='loggedin/agent.php'</script>";
     die;
 }
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -51,7 +52,7 @@ if (isset($_SESSION['user'])) {
                 <!-- Login Button -->
                 <input name="loginSubmit" type="submit" class="btn btn-primary btn-block mb-2 btnPointer" value="Login">
 
-                <!-- Create new account -->
+                <!-- Login test -->
                 <a href="loggedin/agent.php" class="register-btn" role="button">Login *testing purposes*</a>
 
         </div>
@@ -66,10 +67,10 @@ if (isset($_SESSION['user'])) {
 if (isset($_POST['loginSubmit'])) {
     if (!empty($_POST['loginID']) && !empty($_POST['loginPass'])) {
         $username = test_input($_POST['loginID']);
-        $username = strtoupper($username);
+        $username = strtolower($username);
         $password = test_input($_POST['loginPass']);
 
-        // Checks agent table first
+        // Checks agent table
         $stmt = $conn->prepare('SELECT * FROM `agents` WHERE `username` = ?');
         $role = "agent";
 
@@ -83,10 +84,10 @@ if (isset($_POST['loginSubmit'])) {
         $row = $result->fetch_assoc();
 
 
-        // Checks the lecture table if not found in agent table
+        // Checks the admin table if not found in agent table
         if ($result->num_rows != 1) {
             $stmt = $conn->prepare('SELECT * FROM `admins` WHERE `username` = ?');
-            $role = "loggedin";
+            $role = "admin";
 
             $stmt->bind_param('s', $username);
 
@@ -105,36 +106,26 @@ if (isset($_POST['loginSubmit'])) {
             return false;
         }
 
-        // If result found is an unconfirmed user
-        if ($row["status"] != 1) {
-            $id = base64_encode($username);
-
-            echo "<script>window.location.replace('../agent/unconfirmed.php?id=" . $id . "');</script>";
-            return false;
-        }
-
         // Sets the role and status to session - this is needed to restrict access to certain pages
         $_SESSION['user'] = $username;
         $_SESSION['role'] = $role;
-        $_SESSION['status'] = $row["status"];
 
-        if (!empty($_POST['loginRemember'])) {
-            echo "<script>alert('Setting cookies!');</script>";
-            setcookie('username', $_POST['username'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie('password', $_POST['password'], time() + (10 * 365 * 24 * 60 * 60));
-        }
-
-        // echo "<script>alert('Login successful!');";
-
-        if ($_SESSION['role'] == 'agent') {
-            echo "<script>window.location.replace('../agent/index.php');</script>";
-        } else {
-            echo "<script>window.location.replace(agents.phpp');</script>";
+        if (isset($_SESSION['user'])) {
+            echo "<script>window.location.replace('loggedin/ship.php');</script>";
         }
     } else {
         echo "<script>alert('Please fill in all empty fields.');";
         echo "window.location.replace('login.php');</script>";
     }
+}
+
+// Cleans input
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
 ?>

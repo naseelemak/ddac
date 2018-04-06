@@ -96,6 +96,7 @@ if (isset($_POST['btnSubmit'])) {
 // -- Preliminary validation ends
 
     $username = test_input($_POST['username']);
+    $username = strtolower($username);
     $password = test_input($_POST['password']);
     $name = test_input($_POST['name']);
     $email = test_input($_POST['email']);

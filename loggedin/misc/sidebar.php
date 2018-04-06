@@ -10,17 +10,20 @@
 
         <ul class="list-unstyled components">
             <li>
+                <a href="ship.php">Shipment</a>
+            </li>
+            <li>
                 <a href="cust.php">Customers</a>
             </li>
             <li>
                 <a href="item.php">Items</a>
             </li>
             <li>
-                <a href="ship.php">Shipment</a>
-            </li>
-            <li>
                 <a href="vess.php">Vessel</a>
             </li>
+
+            <hr>
+
             <li>
                 <a href="agent.php">Agents</a>
             </li>

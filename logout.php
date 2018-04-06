@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 echo "<script>alert('Logout successful!');";
-echo "window.location.href='misc/login.php'</script>";
+echo "window.location.href='login.php'</script>";
 
 ?>
