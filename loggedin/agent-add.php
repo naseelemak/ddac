@@ -5,68 +5,7 @@ $currentPage = 'Add Agent';
 include 'header.php';
 include 'misc/sidebar.php';
 include 'misc/navbar.php';
-?>
 
-<div class="container">
-    <div class="row px-2">
-        <div class="col-md-6">
-            <form method="post" id="agentAddForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <!-- Username -->
-                <div class="form-group">
-                    <label for="username">Username&nbsp;</label><i class="fa fa-question-circle text-muted"
-                                                                   data-toggle="tooltip" data-placement="auto"
-                                                                   title="Has to be unique" aria-hidden="true"></i>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Username"
-                           required>
-                </div>
-
-                <!-- Password -->
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-                           minlength="6" required>
-                </div>
-
-                <!-- Name -->
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
-                </div>
-
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                </div>
-
-                <div class="float-right mb-4">
-                    <button type="submit" name="btnSubmit" id="btnSubmit" class="btn btn-primary mr-1">Submit
-                    </button>
-                    <a class="btn btn-secondary" href="agent.php" style="padding-left: 15px; padding-right: 15px;">Cancel</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Javascript Validation -->
-<script type="text/javascript">
-    $().ready(function () {
-
-        // Validate signup form on keyup and submit
-        $("#agentAddForm").validate({});
-    });
-
-</script>
-
-
-<?php
-include 'sub-footer.php';
-?>
-
-
-<?php
-// Edit Profile
 if (isset($_POST['btnSubmit'])) {
 
 // -- Preliminary validation
@@ -139,6 +78,68 @@ if (isset($_POST['btnSubmit'])) {
 
     echo "<script>alert('Agent added successfully!'); window.location.replace('agent.php');</script>";
 }
+
+?>
+
+<div class="container">
+    <div class="row px-2">
+        <div class="col-md-6">
+            <form method="post" id="agentAddForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="username">Username&nbsp;</label><i class="fa fa-question-circle text-muted"
+                                                                   data-toggle="tooltip" data-placement="auto"
+                                                                   title="Has to be unique" aria-hidden="true"></i>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username"
+                           required>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+                           minlength="6" required>
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                </div>
+
+                <div class="float-right mb-4">
+                    <button type="submit" name="btnSubmit" id="btnSubmit" class="btn btn-primary mr-1">Submit
+                    </button>
+                    <a class="btn btn-secondary" href="agent.php" style="padding-left: 15px; padding-right: 15px;">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Javascript Validation -->
+<script type="text/javascript">
+    $().ready(function () {
+
+        // Validate signup form on keyup and submit
+        $("#agentAddForm").validate({});
+    });
+
+</script>
+
+
+<?php
+include 'sub-footer.php';
+?>
+
+
+<?php
 
 // Cleans input
 function test_input($data)

@@ -1,8 +1,11 @@
 <?php
 
+require '../config.php';
 
-$stmt = $conn->prepare('SELECT * FROM `posts` WHERE id = ?');
-$stmt->bind_param('i', $_GET['id']);
+$username = base64_decode($_GET['username']);
+
+$stmt = $conn->prepare('SELECT * FROM `agents` WHERE username = ?');
+$stmt->bind_param('i', $username);
 
 // Execute query
 $stmt->execute();
@@ -11,8 +14,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
-$stmt = $conn->prepare('DELETE FROM `posts` WHERE id = ?');
-$stmt->bind_param('i', $_GET['id']);
+$stmt = $conn->prepare('DELETE FROM `agents` WHERE username = ?');
+$stmt->bind_param('s', $username);
 
 // Execute query
 $stmt->execute();
@@ -20,10 +23,7 @@ $stmt->execute();
 // Get the result
 $result = $stmt->get_result();
 
-// Delete the image file
-unlink($row['poster']);
-
-echo "<script>alert('Post deleted successfully!'); window.location.replace(agents.phpp');</script>";
+echo "<script>alert('Agent deleted successfully!'); window.location.replace('agent.php');</script>";
 
 ?>
 

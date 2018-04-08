@@ -10,7 +10,7 @@
 
         <ul class="list-unstyled components">
             <li>
-                <a href="ship.php">Shipment</a>
+                <a href="ship.php">Shipments</a>
             </li>
             <li>
                 <a href="cust.php">Customers</a>
@@ -22,11 +22,16 @@
                 <a href="vess.php">Vessel</a>
             </li>
 
-            <hr>
+            <?php
 
-            <li>
-                <a href="agent.php">Agents</a>
-            </li>
+            if (strcasecmp($_SESSION['role'], 'admin') == 0) {
+                echo "<hr>";
+                echo "<li>";
+                echo "<a href='agent.php'>Agents</a>";
+                echo "</li>";
+            }
+
+            ?>
 
             <hr class="d-lg-none d-xl-none">
 
