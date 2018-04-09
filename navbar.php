@@ -9,7 +9,7 @@
                 <ul class="navbar-nav mr-auto">
                     <?php
                     echo '<li class="nav-item mr-4">
-                            <a class="nav-link" href="../misc/login.php">Login</a>';
+                            <a class="nav-link" href="login.php">Login</a>';
                     ?>
                 </ul>
             </div>

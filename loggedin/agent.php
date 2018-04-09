@@ -62,7 +62,7 @@ include 'sub-footer.php';
 <!-- Delete confirmation prompt -->
 <script language="JavaScript" type="text/javascript">
     function checkDelete() {
-        return confirm('Are you sure you want to delete this post? Once deleted, it cannot be recovered.');
+        return confirm('Are you sure you want to delete this entry? Once deleted, it cannot be recovered.');
     }
 </script>
 
@@ -74,7 +74,6 @@ include 'sub-footer.php';
 
         $table.bootstrapTable({
             toolbar: ".toolbar",
-            clickToSelect: true,
             search: true,
             showColumns: true,
             pagination: true,

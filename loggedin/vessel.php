@@ -1,11 +1,11 @@
 <?php
-$currentPage = "Customers";
+$currentPage = "Vessels";
 
 include 'header.php';
 include 'misc/sidebar.php';
 include 'misc/navbar.php';
 
-$stmt = $conn->prepare('SELECT * FROM `customers`');
+$stmt = $conn->prepare('SELECT * FROM `vessels`');
 
 // execute query
 $stmt->execute();
@@ -19,14 +19,14 @@ $result = $stmt->get_result();
         <div class="col-md-12">
             <div class="card bootstrap-table">
                 <div class="card-body table-full-width">
-                    <a class="btn btn-primary mb-3" href="cust-add.php" style="padding: auto 30px; margin-left; 10px;">Create
+                    <a class="btn btn-primary mb-3" href="vessel-add.php"
+                       style="padding: auto 30px; margin-left; 10px;">Create
                         New</a>&nbsp;&nbsp;
                     <table id="bootstrap-table" class="table">
                         <thead>
                         <th data-field="id">ID</th>
                         <th data-field="name">Name</th>
-                        <th data-field="address">Address</th>
-                        <th data-field="number">Contact Number</th>
+                        <th data-field="desc">Description</th>
                         <th data-field="actions" class="td-actions text-center">Actions</th>
                         </thead>
                         <tbody>
@@ -35,13 +35,12 @@ $result = $stmt->get_result();
                             echo '<tr>';
                             echo '<td>' . $row['id'] . '</td>';
                             echo '<td>' . $row['name'] . '</td>';
-                            echo '<td>' . $row['address'] . '</td>';
-                            echo '<td>' . $row['number'] . '</td>';
+                            echo '<td>' . $row['description'] . '</td>';
                             echo '<td>
-                                        <a rel="tooltip" title="Edit" class="table-action" href="cust-edit.php?id=' . $row['id'] . '">
+                                        <a rel="tooltip" title="Edit" class="table-action" href="vessel-edit.php?id=' . $row['id'] . '">
                                         <i class="fa fa-edit text-warning"></i>
                                         </a>
-                                        <a rel="tooltip" title="Delete" class="table-action" href="cust-delete.php?id=' . $row['id'] . '" onclick="return checkDelete()">
+                                        <a rel="tooltip" title="Delete" class="table-action" href="vessel-delete.php?id=' . $row['id'] . '" onclick="return checkDelete()">
                                         <i class="fa fa-close text-danger"></i>
                                         </a></td>';
                             echo '</tr>';
@@ -76,7 +75,6 @@ include 'sub-footer.php';
 
         $table.bootstrapTable({
             toolbar: ".toolbar",
-            clickToSelect: true,
             search: true,
             showColumns: true,
             pagination: true,

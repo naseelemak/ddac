@@ -40,10 +40,10 @@ $result = $stmt->get_result();
                             echo '<td>' . $row['vessel_name'] . '</td>';
                             echo '<td>' . $row['date'] . '</td>';
                             echo '<td>
-                                        <a rel="tooltip" title="Edit" class="table-action" href="ship-edit.php?username=' . $row['username'] . '">
+                                        <a rel="tooltip" title="Edit" class="table-action" href="ship-edit.php?id=' . $row['id'] . '">
                                         <i class="fa fa-edit text-warning"></i>
                                         </a>
-                                        <a rel="tooltip" title="Delete" class="table-action" href="ship-delete.php?username=' . $row['username'] . '" onclick="return checkDelete()">
+                                        <a rel="tooltip" title="Delete" class="table-action" href="ship-delete.php?id=' . $row['id'] . '" onclick="return checkDelete()">
                                         <i class="fa fa-close text-danger"></i>
                                         </a></td>';
                             echo '</tr>';
@@ -78,7 +78,6 @@ include 'sub-footer.php';
 
         $table.bootstrapTable({
             toolbar: ".toolbar",
-            clickToSelect: true,
             search: true,
             showColumns: true,
             pagination: true,

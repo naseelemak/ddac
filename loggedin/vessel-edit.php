@@ -1,13 +1,13 @@
 <?php
 
-$currentPage = 'Edit Customer';
+$currentPage = 'Edit Vessel';
 
 include 'header.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $stmt = $conn->prepare('SELECT * FROM `customers` WHERE `id` = ?');
+    $stmt = $conn->prepare('SELECT * FROM `vessels` WHERE `id` = ?');
     $stmt->bind_param('s', $id);
 
     // execute query
@@ -26,23 +26,16 @@ if (isset($_GET['id'])) {
         return false;
     }
 
-    if (empty($_POST['address'])) {
-        echo "<script>alert('Please specify an address.');";
-        echo "document.getElementById('address').focus();</script>";
-        return false;
-    }
-
-    if (empty($_POST['number'])) {
-        echo "<script>alert('Please specify an contact number.');";
-        echo "document.getElementById('number').focus();</script>";
+    if (empty($_POST['description'])) {
+        echo "<script>alert('Please specify a description.');";
+        echo "document.getElementById('description').focus();</script>";
         return false;
     }
 // -- Preliminary validation ends
 
     $id = test_input($_POST['id']);
     $name = test_input($_POST['name']);
-    $address = test_input($_POST['address']);
-    $number = test_input($_POST['number']);
+    $description = test_input($_POST['description']);
 
 // Check connection
     if (!$conn) {
@@ -50,15 +43,15 @@ if (isset($_GET['id'])) {
         return false;
     }
 
-    // Updates details in the Customers table
-    $stmt = $conn->prepare('UPDATE `customers` SET `name`= ?, `address`= ?, `number`= ? WHERE `id`= ?');
+    // Updates details in the Vessels table
+    $stmt = $conn->prepare('UPDATE `vessels` SET `name`= ?, `description`= ? WHERE `id`= ?');
 
-    $stmt->bind_param('sssi', $name, $address, $number, $id);
+    $stmt->bind_param('ssi', $name, $description, $id);
 
     // execute query
     $stmt->execute();
 
-    echo "<script>alert('Customer details updated successfully!'); window.location.replace('cust.php');</script>";
+    echo "<script>alert('Vessel details updated successfully!'); window.location.replace('vessel.php');</script>";
 }
 
 include 'misc/sidebar.php';
@@ -69,7 +62,7 @@ include 'misc/navbar.php';
 <div class="container">
     <div class="row px-2">
         <div class="col-md-6">
-            <form method="post" id="custEditForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form method="post" id="vesselEditForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
                 <input type="hidden" name="id" id="id" value="<?php echo $row['id']; ?>">
 
@@ -80,24 +73,17 @@ include 'misc/navbar.php';
                            value="<?php echo $row['name']; ?>" required>
                 </div>
 
-                <!-- Address -->
+                <!-- Description -->
                 <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" name="address" id="address"
-                           placeholder="eg. 21, Jalan Ara, Bangsar" value="<?php echo $row['address']; ?>" required>
-                </div>
-
-                <!-- Contact Number -->
-                <div class="form-group">
-                    <label for="number">Contact Number</label>
-                    <input type="tel" class="form-control" name="number" id="number" placeholder="0123456789"
-                           value="<?php echo $row['number']; ?>" required>
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" name="description" id="description"
+                           placeholder="e.g. Up to 500 containers" value="<?php echo $row['description']; ?>" required>
                 </div>
 
                 <div class="float-right mb-4">
                     <button type="submit" name="btnSubmit" id="btnSubmit" class="btn btn-primary mr-1">Submit
                     </button>
-                    <a class="btn btn-secondary" href="cust.php"
+                    <a class="btn btn-secondary" href="vessel.php"
                        style="padding-left: 15px; padding-right: 15px;">Cancel</a>
                 </div>
             </form>
@@ -114,7 +100,7 @@ include 'misc/navbar.php';
         }, 'Please enter a valid phone number.');
 
         // Validate signup form on keyup and submit
-        $("#custAddForm").validate({
+        $("#vesselAddForm").validate({
 
             rules: {
                 number: "required number",

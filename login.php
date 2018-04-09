@@ -52,9 +52,6 @@ if (isset($_SESSION['user'])) {
                 <!-- Login Button -->
                 <input name="loginSubmit" type="submit" class="btn btn-primary btn-block mb-2 btnPointer" value="Login">
 
-                <!-- Login test -->
-                <a href="loggedin/agent.php" class="register-btn" role="button">Login *testing purposes*</a>
-
         </div>
         <div class="col-md-4"></div>
     </div>
