@@ -3,8 +3,6 @@
 $currentPage = 'Add Agent';
 
 include 'header.php';
-include 'misc/sidebar.php';
-include 'misc/navbar.php';
 
 if (isset($_POST['btnSubmit'])) {
 
@@ -78,6 +76,9 @@ if (isset($_POST['btnSubmit'])) {
 
     echo "<script>alert('Agent added successfully!'); window.location.replace('agent.php');</script>";
 }
+
+include 'misc/sidebar.php';
+include 'misc/navbar.php';
 
 ?>
 
