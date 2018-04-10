@@ -3,7 +3,7 @@
 session_start();
 
 $servername = "ddac-maersksql.mysql.database.azure.com";
-$username = "maerskmaster";
+$username = "maerskmaster@ddac-maersksql";
 $password = "M@ersk121";
 $dbname = "ddac-maersksql";
 
