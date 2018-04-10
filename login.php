@@ -8,31 +8,19 @@ if (isset($_SESSION['user'])) {
     echo "<script>window.location.href='loggedin/agent.php'</script>";
     die;
 } else if (isset($_POST['loginSubmit'])) {
-
-    echo "<script>alert('Submit button clicked');</script>";
-
     if (!empty($_POST['loginID']) && !empty($_POST['loginPass'])) {
         $username = test_input($_POST['loginID']);
         $username = strtolower($username);
         $password = test_input($_POST['loginPass']);
 
-        echo "<script>alert('1');</script>";
-
         // Checks agent table
         $stmt = $conn->prepare('SELECT * FROM `agents` WHERE `username` = ?');
-
-        echo "<script>alert('1.1');</script>";
-
         $role = "agent";
-
-        echo "<script>alert('2');</script>";
 
         $stmt->bind_param('s', $username);
 
         // execute query
         $stmt->execute();
-
-        echo "<script>alert('3');</script>";
 
         // Get the result
         $result = $stmt->get_result();
