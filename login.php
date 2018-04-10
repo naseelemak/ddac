@@ -8,10 +8,15 @@ if (isset($_SESSION['user'])) {
     echo "<script>window.location.href='loggedin/agent.php'</script>";
     die;
 } else if (isset($_POST['loginSubmit'])) {
+
+    echo "<script>alert('Submit button clicked');</script>";
+
     if (!empty($_POST['loginID']) && !empty($_POST['loginPass'])) {
         $username = test_input($_POST['loginID']);
         $username = strtolower($username);
         $password = test_input($_POST['loginPass']);
+
+        echo "<script>alert('1');</script>";
 
         // Checks agent table
         $stmt = $conn->prepare('SELECT * FROM `agents` WHERE `username` = ?');
@@ -26,6 +31,7 @@ if (isset($_SESSION['user'])) {
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
+        echo "<script>alert('2');</script>";
 
         // Checks the admin table if not found in agent table
         if ($result->num_rows != 1) {
@@ -56,6 +62,7 @@ if (isset($_SESSION['user'])) {
         if (isset($_SESSION['user'])) {
             echo "<script>window.location.replace('loggedin/ship.php');</script>";
         }
+
     } else {
         echo "<script>alert('Please fill in all empty fields.');";
         echo "window.location.replace('login.php');</script>";
