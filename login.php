@@ -16,22 +16,24 @@ if (isset($_SESSION['user'])) {
         $username = strtolower($username);
         $password = test_input($_POST['loginPass']);
 
-        echo "<script>alert('1');</script>";
-
         // Checks agent table
         $stmt = $conn->prepare('SELECT * FROM `agents` WHERE `username` = ?');
         $role = "agent";
 
+        echo "<script>alert('1');</script>";
+
         $stmt->bind_param('s', $username);
+
+        echo "<script>alert('2');</script>";
 
         // execute query
         $stmt->execute();
 
+        echo "<script>alert('3');</script>";
+
         // Get the result
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-
-        echo "<script>alert('2');</script>";
 
         // Checks the admin table if not found in agent table
         if ($result->num_rows != 1) {
